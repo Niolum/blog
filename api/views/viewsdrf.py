@@ -1,8 +1,8 @@
-from . import serializers
+from .. import serializers
 from django.contrib.auth.models import User
 from rest_framework import generics, permissions
-from .models import Post, Category, Comment
-from .permissions import IsOwnerOrReadOnly
+from ..models import Post, Category, Comment
+from ..permissions import IsOwnerOrReadOnly
 
 
 class UserList(generics.ListAPIView):
