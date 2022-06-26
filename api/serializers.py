@@ -6,6 +6,7 @@ from .models import Post, Category, Comment
 class PostSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     comments = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    categories = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
 
     class Meta:
         model = Post
@@ -15,20 +16,17 @@ class PostSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     posts = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     comments = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-    categories = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
 
     class Meta:
         model = User
-        fields = ['id', 'username', 'posts', 'comments', 'categories']
+        fields = ['id', 'username', 'posts', 'comments']
 
 
 class CategorySerializer(serializers.ModelSerializer):
-    owner = serializers.ReadOnlyField(source='owner.username')
-    posts = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
 
     class Meta:
         model = Category
-        fields = ['id', 'name', 'owner', 'posts']
+        fields = ['id', 'name']
 
 class CommentSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')

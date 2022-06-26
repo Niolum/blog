@@ -5,15 +5,15 @@ from .models import Post, Category, Comment
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     list_display = ("title", "owner", "created")
-    list_filter = ("title", "owner", "created")
-    search_fields = ("title", "owner__username")
+    list_filter = ("title", "owner", "created", "categories")
+    search_fields = ("title", "owner__username", "categories")
 
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ("name", "owner")
-    list_filter = ("name", "owner__username")
-    search_fields = ("name", )
+    list_display = ("name",)
+    list_filter = ("name",)
+    search_fields = ("name",)
 
 
 @admin.register(Comment)

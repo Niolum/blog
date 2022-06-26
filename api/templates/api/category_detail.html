@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ category.name }}</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="category-header">
+            {{category.name}}
+        </h1>
+        {% for post in category.posts.all %}
+        <div class="category-post">
+            <a href="{{ post.get_absolute_url }}" class="editContent">
+                {{ post.title }}
+            </a>
+        </div> 
+        {% endfor %}
+    </div>
+    
+</body>
+</html>
