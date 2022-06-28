@@ -6,20 +6,24 @@
 {% block content %}
     
     <div class="container">
-        <h1 class="categories-header">
-            Категории
-        </h1>
-        <div class="row">
-        {% for category in category_list %}
-        <div class="category">
-            <div class="category-name">
-                <a href="#" class="editContent">
-                    {{ category.name }}
-                </a>
+        <section class="category-list">
+            <div class="category-wrapper list-wrapper">
+                <h1 class="categories-header">
+                    Категории
+                </h1>
+                <div class="row">
+                {% for category in category_list %}
+                <div class="category">
+                    <div class="category-name">
+                        <a href="{{ category.get_absolute_url }}" class="editContent">
+                            {{ category.name }}
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+                </div> 
             </div>
-        </div>
-        {% endfor %}
-        </div>   
+        </section>  
     </div>
     
 {% endblock content %}

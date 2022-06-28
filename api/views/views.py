@@ -6,6 +6,7 @@ from ..forms import CommentForm, AddCategoryForm, AddPostForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import auth
 from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 
 class PostListView(ListView):
@@ -64,5 +65,8 @@ class AddCommentView(View):
 class SignUp(CreateView):
     form_class = UserCreationForm
     template_name = "registration/signup.html"
+    
+    def get_success_url(self):
+        return reverse('home')
 
 
