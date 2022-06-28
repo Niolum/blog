@@ -1,4 +1,5 @@
 {% extends 'api/base.html' %}
+{% load static %}
 {% block title %}
 <title>{{ category.name }}</title>
 {% endblock title %}
@@ -8,13 +9,37 @@
         <h1 class="category-header">
             {{category.name}}
         </h1>
+        <div class="row">
         {% for post in category.posts.all %}
-        <div class="category-post">
-            <a href="{{ post.get_absolute_url }}" class="editContent">
-                {{ post.title }}
-            </a>
-        </div> 
+        <div class="post col-lg-12 col-md-8 col-xs-8">
+            <div class="category-post">
+                <a href="{{ post.get_absolute_url }}" class="editContent">
+                    <h3>{{ post.title }}</h3>
+                </a>
+            </div> 
+            <div class="category-post-body">
+                <a href="{{ post.get_absolute_url }}" class="editContent">
+                    {{ post.text|linebreaks|truncatechars:350 }}
+                </a>
+            </div>
+            <div class="post-owner-date">
+                <div class="post-owner">
+                    <a href="#" class="editContent">
+                        Автор: {{ post.owner }}
+                    </a>
+                </div>
+                <div class="date-comments">
+                    <small class="post-date">{{ post.created|date:"d M Y" }} {{ post.created|time:"H:i"}}</small>
+                    <span>
+                        <img src="{% static 'images/comment.png' %}" class="icon">
+                        <small class="post-comments">{{ post.comments.all|length }}</small>
+                    </span>
+                </div>
+            </div>
+        </div>
         {% endfor %}
+        </div>
+
     </div>
     
 {% endblock content %}

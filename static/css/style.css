@@ -28,7 +28,7 @@ h1 {
     margin-top: 13px;
 }
 
-.post-title h3 {
+h3 {
     color:#000;
 }
 
@@ -153,4 +153,137 @@ h1 {
 
 .form-control {
     height: 100px;
+}
+
+/* category-list */
+
+.category-name a {
+    text-decoration: none;
+    color:#000;
+}
+
+.category-name a:hover {
+    color:blue;
+}
+
+.category-list {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.category-wrapper {
+    max-width: 700px;
+    width: 100%;
+}
+
+/* category-detail */
+
+
+.category-post a {
+    text-decoration: none;
+}
+
+.category-post-body {
+    margin-top: 13px
+}
+
+.category-post-body a {
+    text-decoration: none;
+    color: #000;
+}
+
+/* addpost */
+.form {
+    margin: auto;
+    text-align: center;
+}
+
+form {
+    margin: auto;
+}
+
+.addpost label {
+    display: block;
+    margin: 10px 0;
+}
+
+input[type=text] {
+    border:0;
+    border-radius:10px;
+    box-shadow:0 0 15px 4px rgba(42, 41, 46, 0.74);
+}
+
+textarea {
+    border:0;
+    border-radius:10px;
+    box-shadow:0 0 15px 4px rgba(42, 41, 46, 0.74);
+    height:150px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+select {
+    border:0;
+    border-radius:10px;
+    box-shadow:0 0 15px 4px rgba(42, 41, 46, 0.74);
+    height:150px;
+    width: 150px;
+}
+
+/* addcategory */
+.addcategory label {
+    display: block;
+    margin: 10px 0;
+    padding: 10px 0;
+}
+
+.addcategory input {
+    margin: 10px 0;
+
+}
+
+/* login */
+.login {
+    margin: auto;
+    text-align: center;
+}
+
+.login label {
+    margin: 10px 15px 10px 0;
+}
+
+input[type=password] {
+    border:0;
+    border-radius:10px;
+    box-shadow:0 0 15px 4px rgba(42, 41, 46, 0.74);
+}
+
+
+/* logged_out */
+.logged-out {
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+/* signup */
+.register-form label {
+    display: block;
+    margin: 10px 0;
+}
+
+.register-form span {
+    display: block;
+    margin: 10px 0;
+}
+
+.register-form ul {
+    list-style-type: circle;
 }

@@ -3,7 +3,10 @@ from .models import Comment, Post, Category
 
 
 class AddPostForm(forms.ModelForm):
-    categories = forms.ModelMultipleChoiceField(queryset=Category.objects.all(), widget=forms.CheckboxSelectMultiple, to_field_name='name')
+    categories = forms.ModelMultipleChoiceField(label="Категории", 
+    queryset=Category.objects.all(), 
+    widget=forms.SelectMultiple, 
+    to_field_name='name')
 
     class Meta:
         model = Post

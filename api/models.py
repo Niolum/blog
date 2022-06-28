@@ -7,7 +7,7 @@ class Post(models.Model):
     text = models.TextField('Текст', blank=True, default='')
     created = models.DateTimeField('Дата', auto_now_add=True)
     owner = models.ForeignKey('auth.User', verbose_name='Имя', related_name='posts', on_delete=models.CASCADE)
-    categories = models.ManyToManyField('Category', verbose_name='Пост', related_name='posts')
+    categories = models.ManyToManyField('Category', verbose_name='Категории', related_name='posts')
 
     def __str__(self):
         return f"{self.id} | {self.title} | {self.owner}"
