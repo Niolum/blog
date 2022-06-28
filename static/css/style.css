@@ -1,0 +1,156 @@
+html {
+    height: 100%;
+  }
+
+body {
+    margin:0;
+    font-family:"Open Sans", Verdana, Tahoma, Arial, Helvetica, sans-serif;
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+.container {
+    margin:auto;
+}
+
+/* post-list */
+h1 {
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 85px;
+    text-align: center;
+}
+
+.post {
+    border-bottom: 1px solid #000;
+    padding: 0 0 13px;
+    margin-top: 13px;
+}
+
+.post-title h3 {
+    color:#000;
+}
+
+.post a {
+    text-decoration: none;
+    color:#000;
+}
+
+.post-category {
+    font-style: italic;
+    color:#000;
+    margin-bottom: 2px;
+    margin-top: 8px;
+    font-size: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.post-category a {
+    border: 8px solid transparent;
+    box-shadow: 0 0 8px rgba(117, 166, 238, 0.795);
+    background-color: rgb(204, 204, 247);
+}
+
+.post-category a:hover {
+    color: rgb(39, 146, 39);
+}
+
+.post-body {
+    margin-top: 15px
+}
+
+.post-owner {
+    font-style: italic;
+    margin-bottom: 2px;
+}
+
+.date-comments {
+    display: flex;
+    gap: 15px;
+}
+
+.date-comments img{
+    width: 24px;
+    height: 24px;
+}
+
+/* post-detail */
+.post-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.post-wrapper {
+    max-width: 700px;
+    width: 100%;
+}
+
+.post-header-detail {
+    text-align: left;
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 50px;
+    margin-bottom: 22px;
+    margin-top: 16px;
+}
+
+.post-owner a {
+    text-decoration: none;
+    color: #000;
+}
+
+.post-category {
+    text-decoration: none;
+}
+
+.count-comments img {
+    width: 48px;
+    height: 48px;
+}
+
+.count-comments small {
+    font-size: 20px;
+}
+
+.comments {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.comment {
+    border:1px solid;
+    border-radius: 30px;
+    margin: 10px;
+}
+
+.comment-info {
+    /* margin: 10px; */
+    padding: 20px;
+    min-height: 100px;
+}
+
+.comment-owner {
+    font-size: 14px;
+    margin-left: 8px;
+    margin-bottom: 0;
+}
+
+.comment-date {
+    font-size: 14px;
+    margin-left: 8px;
+}
+
+.comment-text {
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
+.form-control {
+    height: 100px;
+}

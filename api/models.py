@@ -35,7 +35,7 @@ class Category(models.Model):
 
 
 class Comment(models.Model):
-    text = models.TextField('Сообщение', blank=False)
+    text = models.TextField('Текст комментария', blank=False)
     owner = models.ForeignKey('auth.User', verbose_name='Имя', related_name='comments', on_delete=models.CASCADE)
     post = models.ForeignKey(Post, verbose_name='Пост', related_name='comments', on_delete=models.CASCADE)
     created = models.DateTimeField('Дата', auto_now_add=True)
