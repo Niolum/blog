@@ -1,64 +1,85 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ post.title }}</title>
-</head>
+{% extends 'api/base.html' %}
+{% load static %}
+{% block title %}
+<title>{{ post.title }}</title>
+{% endblock title %}
 
-<body>
+{% block content %}
     <div class="container">
-        <h1 class="post-header">
-            {{post.title}}
-        </h1>
-        {% for category in post.categories.all %}
-            <a href="{{ category.get_absolute_url }}" class="post-category">
-                {{ category }}
-            </a>
-        {% endfor %}
-        <div class="post-body">
-            <p class="editContent">
-                {{ post.text|linebreaks }}
-            </p>
-        </div> 
-    </div>
-
-    <div class="container">
-        <div class="row">
-            <h1 class="commnt-header">Оставить отзыв</h1>
-            <form action="{% url 'add_comment' pk=post.pk %}" method="post" id="formComment" enctype="multipart/form-data">
-              {% csrf_token %}
-              <input type="hidden" name="parent" id="contactparent" value="">
-              <div class="form-error">{{ form.non_fields_errors }}</div>
-              {% for f in form %}
-              <p><label class="form-label" for="{{ f.id_for_label }}">{{f.label}}: </label>{{ f }}</p>
-              <div class="form-error">{{ f.errors }}</div>
-              {% endfor %}
-              <button type="submit" class="btn btn-primary addcomment">Добавить</button>
-            </form>
-          </div>
-    </div>
-
-    <div class="container">
-        <div class="row">
-            <div class="comments">
-                {% for comment in post.comments.all %}
-                <div class="comment">
-                    <h5 class="comment-owner">
-                        {{ comment.owner}}
-                    </h5>
-                    <p class="comment-text">
-                        {{ comment.text }}
-                    </p>
-                    <time class="comment-date">
-                        {{ comment.created|date:"D d M Y" }} {{ comment.created|time:"H:i"}}
-                    </time>
+        <section class="post-info">
+            <div class="post-wrapper header-wrapper">
+                <h1 class="post-header-detail">
+                    {{post.title}}
+                </h1>
+                <div class="post-owner-date">
+                    <div class="post-owner">
+                        <a href="#" class="editContent">
+                            Автор: {{ post.owner }}
+                        </a>
+                    </div>
+                    <div class="date-comments">
+                        <small class="post-date">{{ post.created|date:"d M Y" }} {{ post.created|time:"H:i"}}</small>
+                        <span>
+                            <img src="{% static 'images/comment.png' %}" class="icon">
+                            <small class="post-comments">{{ post.comments.all|length }}</small>
+                        </span>
+                    </div>
                 </div>
+                <div class="post-category">
+                {% for category in post.categories.all %}
+                    <a href="{{ category.get_absolute_url }}" class="post-category">
+                        {{ category }}
+                    </a>
                 {% endfor %}
+                </div>
             </div>
-        </div>
-    </div>
-    
-</body>
-</html>
+            <div class="post-wrapper text-wrapper">
+                <div class="post-body">
+                    <p class="editContent">
+                        {{ post.text|linebreaks }}
+                    </p>
+                </div>
+            </div>
+        </section> 
+
+        <section class="comments">
+            <div class="post-wrapper all-comments-wrapper">
+                <div class="all-comments">
+                    <div class="count-comments">
+                        <span>
+                            <img src="{% static 'images/comment.png' %}" class="icon">
+                            <small class="post-comments">{{ post.comments.all|length }}</small>
+                        </span>
+                    </div>
+                    {% for comment in post.comments.all %}
+                    <div class="comment">
+                        <div class="comment-info">
+                            <h5 class="comment-owner">
+                                {{ comment.owner}}
+                            </h5>
+                            <time class="comment-date">
+                                {{ comment.created|date:"d M Y" }} {{ comment.created|time:"H:i"}}
+                            </time>
+                            <p class="comment-text">
+                                {{ comment.text }}
+                            </p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="post-wrapper add-comments-wrapper">
+                <form action="{% url 'add_comment' pk=post.pk %}" method="post" id="formComment" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="hidden" name="parent" id="contactparent" value="">
+                <div class="form-error">{{ form.non_fields_errors }}</div>
+                {% for f in form %}
+                <p><label class="form-label" for="{{ f.id_for_label }}">{{f.label}}: </label>{{ f }}</p>
+                <div class="form-error">{{ f.errors }}</div>
+                {% endfor %}
+                <button type="submit" class="btn btn-primary addcomment">Отправить</button>
+                </form>
+            </div>
+
+        </section>
+{% endblock content %}

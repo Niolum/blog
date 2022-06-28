@@ -1,25 +1,20 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Добавить категорию</title>
-</head>
-<body>
+{% extends 'api/base.html' %}
+{% block title %}
+<title>Добавить категорию</title>
+{% endblock title %}
+{% block content %}
     
+<div class="container">
+    <h1>Добавить категорию</h1>
 
-<h1>Добавить категорию</h1>
-
-<form action="{% url 'add_category' %}" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    <div class="form-error">{{ form.non_field_errors }}</div>
-    {% for f in form %}
-    <p><label class="form-label" for="{{ f.id_for_label }}">{{f.label}}: </label>{{ f }}</p>
-    <div class="form-error">{{ f.errors }}</div>
-    {% endfor %}
-    <button type="submit">Добавить</button>
-</form>
-
-</body>
-</html>
+    <form action="{% url 'add_category' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-error">{{ form.non_field_errors }}</div>
+        {% for f in form %}
+        <p><label class="form-label" for="{{ f.id_for_label }}">{{f.label}}: </label>{{ f }}</p>
+        <div class="form-error">{{ f.errors }}</div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">Добавить</button>
+    </form>
+</div>
+{% endblock content %}

@@ -4,8 +4,7 @@
 *.pyc
 __pycache__
 db.sqlite3
-media
-settings_local.py
+
 
 # Environments 
 .env 
@@ -24,6 +23,4 @@ venv.bak/
 !.vscode/extensions.json 
 .history
 
-**/migrations/*
-**/static/*
 **/local.py

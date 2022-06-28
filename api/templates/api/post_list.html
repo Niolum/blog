@@ -1,46 +1,49 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Посты</title>
-</head>
-<body>
+{% extends 'api/base.html' %}
+{% load static %}
+{% block title %}
+<title>Главная страница</title>
+{% endblock title %}
+{% block content %}
     <div class="container">
         <h1 class="post-header">
-            Посты
+            Блоги
         </h1>
         <div class="row">
         {% for post in post_list %}
-        <div class="post">
+        <div class="post col-lg-12 col-md-8 col-xs-8">
             <div class="post-title">
                 <a href="{{ post.get_absolute_url }}" class="editContent">
-                    {{ post.title }}
+                    <h3>{{ post.title }}</h3>
                 </a>
             </div>
+            <div class="post-category">
             {% for category in post.categories.all %} 
                 <a href="{{ category.get_absolute_url }}" class="editContent">
                     {{ category.name }}
                 </a>
             {% endfor %}
+            </div>
             <div class="post-body">
                 <a href="{{ post.get_absolute_url }}" class="editContent">
                     {{ post.text|linebreaks|truncatechars:350 }}
                 </a>
             </div>
             <div class="post-owner-date">
-                <a href="#" class="editContent">
-                    {{ post.owner }}
-                </a>
-                <a href="#" class="editContent">
-                    {{ post.created|date:"D d M Y" }} {{ post.created|time:"H:i"}}
-                </a>
+                <div class="post-owner">
+                    <a href="#" class="editContent">
+                        Автор: {{ post.owner }}
+                    </a>
+                </div>
+                <div class="date-comments">
+                    <small class="post-date">{{ post.created|date:"d M Y" }} {{ post.created|time:"H:i"}}</small>
+                    <span>
+                        <img src="{% static 'images/comment.png' %}" class="icon">
+                        <small class="post-comments">{{ post.comments.all|length }}</small>
+                    </span>
+                </div>
             </div>
         </div>
         {% endfor %}
         </div>   
     </div>
-    
-</body>
-</html>
+{% endblock content %}
