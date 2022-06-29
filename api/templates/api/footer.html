@@ -1,0 +1,12 @@
+{% block footer %}
+    <footer class="footer d-flex flex-wrap justify-content-between align-items-center py-3 border-top bg-dark">
+      <p class="col-md-4 mb-0">&copy; 2022 GameBlog</p>
+  
+      <ul class="nav col-md-4 justify-content-end">
+        <li class="foot-link nav-item"><a href="{% url 'home' %}" class="nav-link px-2">Блоги</a></li>
+        <li class="foot-link nav-item"><a href="{% url 'categories' %}" class="nav-link px-2">Категории</a></li>
+        <li class="foot-link nav-item"><a href="#" class="nav-link px-2">About</a></li>
+      </ul>
+    </footer>
+
+{% endblock footer %}

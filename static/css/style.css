@@ -1,3 +1,12 @@
+@media (min-width: 800px) {  
+    aside {position: static; width: 100%;}
+    .layout {--sidebar-min-width: 264px;} 
+  }
+  
+@media (max-width: 799px) { 
+    aside {display: none;}
+}
+
 html {
     height: 100%;
   }
@@ -5,16 +14,29 @@ html {
 body {
     margin:0;
     font-family:"Open Sans", Verdana, Tahoma, Arial, Helvetica, sans-serif;
-    min-height: 100%;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
+    height: 100%;
 }
 
 .container {
     margin:auto;
+    height: 100%;
 }
 
 /* post-list */
+.layout {
+    display: grid;
+    flex-direction: row;
+    grid-template-columns: max(var(--sidebar-min-width),24%) 1fr;
+    min-height: 100%;
+}
+.main-content {
+    padding-left: 45px;
+    padding-right: 20px;
+    flex-grow: 1;
+    max-width: 973px;
+    overflow: hidden;
+}
+
 h1 {
     font-weight: 600;
     font-size: 30px;
@@ -156,14 +178,20 @@ h3 {
 }
 
 /* category-list */
-
-.category-name a {
+.category-info a {
     text-decoration: none;
-    color:#000;
+    border: 8px solid transparent;
+    box-shadow: 0 0 8px rgba(117, 166, 238, 0.795);
+    background-color: rgb(204, 204, 247);
 }
 
 .category-name a:hover {
     color:blue;
+}
+
+.category-info {
+    margin-bottom: 35px;
+    margin-top: 35px;
 }
 
 .category-list {
@@ -286,4 +314,62 @@ a {
 
 .register-form ul {
     list-style-type: circle;
+}
+
+/* navbar */
+/* .navbar {
+    position: fixed;
+    width: 100%;
+} */
+.navbar-brand {
+    margin-left: 35px;
+    margin-right: 35px;
+}
+
+.navbar-nav {
+    margin: auto;
+    padding: auto;
+}
+
+.logo-icon {
+    margin-left: 10px;
+    margin-right: 15px;
+}
+
+.logo {
+    width: 36px;
+    height: 36px;
+    border: 1px solid #fff;
+    border-radius: 24px;
+}
+
+/* footer */
+footer {
+    margin-top: 1.5rem!important;
+    position:absolute;
+    width: 100%;
+}
+
+.footer p{
+    color:#fff;
+    margin-left: 35px; 
+}
+
+.footer ul{
+    margin-right: 35px;
+}
+
+.foot-link a{
+    color:#fff
+}
+
+/* sidebar */
+
+.sidebar-menu {
+    position: fixed;
+
+}
+
+.sidebar a{
+    color: #000;
 }
