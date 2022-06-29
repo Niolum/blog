@@ -4,13 +4,17 @@
 <title>Главная страница</title>
 {% endblock title %}
 {% block content %}
-    <div class="container">
+<div class="layout">
+    {% block sidebar %}
+    {% include 'api/sidebar.html' %}
+    {% endblock sidebar %}
+    <div class="main-content">
         <h1 class="post-header">
             Блоги
         </h1>
         <div class="row">
         {% for post in post_list %}
-        <div class="post col-lg-12 col-md-8 col-xs-8">
+        <div class="post col-lg-12 col-md-12 col-xs-12">
             <div class="post-title">
                 <a href="{{ post.get_absolute_url }}" class="editContent">
                     <h3>{{ post.title }}</h3>
@@ -46,4 +50,5 @@
         {% endfor %}
         </div>   
     </div>
+</div>
 {% endblock content %}

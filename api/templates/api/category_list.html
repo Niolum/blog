@@ -4,7 +4,10 @@
 {% endblock title %}
 
 {% block content %}
-    
+<div class="layout">
+    {% block sidebar %}
+    {% include 'api/sidebar.html' %}
+    {% endblock sidebar %}    
     <div class="container">
         <section class="category-list">
             <div class="category-wrapper list-wrapper">
@@ -13,11 +16,13 @@
                 </h1>
                 <div class="row">
                 {% for category in category_list %}
-                <div class="category">
-                    <div class="category-name">
-                        <a href="{{ category.get_absolute_url }}" class="editContent">
-                            {{ category.name }}
-                        </a>
+                <div class="col-lg-4 col-md-6 col-xs-6 category">
+                    <div class="category-info">
+                        <div class="category-name">
+                            <a href="{{ category.get_absolute_url }}" class="editContent">
+                                {{ category.name }}
+                            </a>
+                        </div>
                     </div>
                 </div>
                 {% endfor %}
@@ -25,5 +30,5 @@
             </div>
         </section>  
     </div>
-    
+</div>    
 {% endblock content %}

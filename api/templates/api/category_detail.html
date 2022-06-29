@@ -4,8 +4,11 @@
 <title>{{ category.name }}</title>
 {% endblock title %}
 {% block content %}
-    
-    <div class="container">
+<div class="layout">
+    {% block sidebar %}
+    {% include 'api/sidebar.html' %}
+    {% endblock sidebar %}    
+    <div class="main-content">
         <h1 class="category-header">
             {{category.name}}
         </h1>
@@ -41,5 +44,5 @@
         </div>
 
     </div>
-    
+</div>    
 {% endblock content %}
