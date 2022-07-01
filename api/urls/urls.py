@@ -8,6 +8,8 @@ from api.views.views import (
     AddCategoryView,
     AddPostView,
     SignUp,
+    EditProfileView,
+    UserProifleDetailView
 ) 
 
 
@@ -20,5 +22,7 @@ urlpatterns = [
     path('add-category/', AddCategoryView.as_view(), name='add_category'),
     path('add-post/', AddPostView.as_view(), name='add_post'),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('signup/', SignUp.as_view(), name='signup')
+    path('signup/', SignUp.as_view(), name='signup'),
+    path('edit-profile/<int:pk>/', EditProfileView.as_view(), name='edit_profile'),
+    path('user/<int:pk>/', UserProifleDetailView.as_view(), name='user')
 ]
