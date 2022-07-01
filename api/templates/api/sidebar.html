@@ -32,6 +32,12 @@
                 Войти
             </a>
             </li>
+            {% else %}
+            <li>
+            <a href="{% url 'user' pk=user.pk %}" class="nav-link">
+                Мой профиль
+            </a>
+            </li>
             {% endif %}
         </ul>
         <hr>

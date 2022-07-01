@@ -34,7 +34,7 @@
             </div>
             <div class="post-owner-date">
                 <div class="post-owner">
-                    <a href="#" class="editContent">
+                    <a href="{% url 'user' pk=post.owner.pk %}" class="editContent">
                         Автор: {{ post.owner }}
                     </a>
                 </div>

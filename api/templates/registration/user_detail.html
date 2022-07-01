@@ -1,0 +1,91 @@
+{% extends 'api/base.html' %}
+{% load static %}
+{% block title %}
+<title>Мой профиль</title>
+{% endblock title %}
+
+{% block content %}
+<div class="layout">
+    {% block sidebar %}
+    {% include 'api/sidebar.html' %}
+    {% endblock sidebar %} 
+    <div class="main-content">
+        <h1 class="user-header">
+            {{ user.username}}
+        </h1>
+        <div class="all-user-info">
+            <h2 class="user-info">Данные о пользователе</h2>
+            <div class="user-info">
+                <span class="name-label">Полное имя:</span>
+                <span class="name-value">{{ user.first_name }} {{ user.last_name }}</span>
+            </div>
+            <div class="user-info">
+                <span class="email-label">Почта:</span>
+                <span class="email-value">{{ user.email }}</span>
+            </div>
+            <div class="user-info">
+                <span class="date-joined-label">Дата регистрации:</span>
+                <span class="date-joined-value">{{ user.date_joined|date:"d M Y" }}</span>
+            </div>
+        </div>
+        <div class="publication">
+            <a href="#blogs">Публикации пользователя</a>
+            <a href="#user-comments">Комментарии</a>
+        </div>
+
+        <div class="row">
+            <h1 id="blogs">Публикации пользователя</h1>   
+            {% for post in user.posts.all %}
+                <div class="post col-lg-12 col-md-12 col-xs-12">
+                    <div class="post-title">
+                        <a href="{{ post.get_absolute_url }}" class="editContent">
+                            <h3>{{ post.title }}</h3>
+                        </a>
+                    </div>
+                    <div class="post-category">
+                    {% for category in post.categories.all %} 
+                        <a href="{{ category.get_absolute_url }}" class="editContent">
+                            {{ category.name }}
+                        </a>
+                    {% endfor %}
+                    </div>
+                    <div class="post-body">
+                        <a href="{{ post.get_absolute_url }}" class="editContent">
+                            {{ post.text|linebreaks|truncatechars:350 }}
+                        </a>
+                    </div>
+                    <div class="post-owner-date">
+                        <div class="date-comments">
+                            <small class="post-date">{{ post.created|date:"d M Y" }} {{ post.created|time:"H:i"}}</small>
+                            <span>
+                                <img src="{% static 'images/comment.png' %}" class="icon">
+                                <small class="post-comments">{{ post.comments.all|length }}</small>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div> 
+        <div class="row">
+            <h1 id="user-comments">Комментарии пользователя</h1>
+            {% for comment in user.comments.all %}
+                <div class="user-comment col-lg-12 col-md-12 col-xs-12"> 
+                    <div class="comment">
+                        <div class="comment-info">
+                            <h5 class="comment-owner">
+                                {{ comment.owner}}
+                            </h5>
+                            <time class="comment-date">
+                                {{ comment.created|date:"d M Y" }} {{ comment.created|time:"H:i"}}
+                            </time>
+                            <p class="comment-text">
+                                {{ comment.text }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>    
+{% endblock content %}

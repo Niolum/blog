@@ -1,0 +1,18 @@
+{% extends 'api/base.html' %}
+{% block title %}
+<title>Редактирование профиля</title>
+{% endblock title %}
+{% block content %}
+
+<div class="container">
+  <div class="form profile">
+    <h1>Редактировать ваш профиль</h1>
+      
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Отправить</button>               
+      </form>
+  </div>
+</div>    
+{% endblock content %}
