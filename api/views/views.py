@@ -75,7 +75,8 @@ class SignUp(CreateView):
         return reverse('home')
 
 
-class EditProfileView(UpdateView):
+class EditProfileView(LoginRequiredMixin, UpdateView):
+    login_url = 'login'
     model = User 
     fields = ['username', 'first_name', 'last_name', 'email']
     template_name = "registration/user_form.html"

@@ -5,7 +5,7 @@
 {% endblock title %}
 
 {% block content %}
-    <div class="container">
+    <div class="post-container">
         <section class="post-info">
             <div class="post-wrapper header-wrapper">
                 <h1 class="post-header-detail">
@@ -13,7 +13,7 @@
                 </h1>
                 <div class="post-owner-date">
                     <div class="post-owner">
-                        <a href="{% url 'user' pk=user.pk %}" class="editContent">
+                        <a href="{% url 'user' pk=post.owner.pk %}" class="editContent">
                             Автор: {{ post.owner }}
                         </a>
                     </div>

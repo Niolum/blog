@@ -1,4 +1,4 @@
-from .models import Post, Category, Comment
+from ..models import Post, Category, Comment
 from django.contrib.auth.models import User
 from rest_framework.test import APITestCase
 from rest_framework import status
@@ -85,10 +85,7 @@ class BlogTests(APITestCase):
         print(User.objects.all())
 
         url1 = reverse('category-list')
-        data1 = {'name': 'Game',
-            'posts': '',
-            'owner': 1,
-        }
+        data1 = {'name': 'Game'}
         response1 = self.client.post(url1, data1)
         self.assertEqual(response1.status_code, status.HTTP_201_CREATED)
         self.assertEqual(Category.objects.count(), 1)
