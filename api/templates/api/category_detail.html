@@ -22,7 +22,7 @@
             </div> 
             <div class="category-post-body">
                 <a href="{{ post.get_absolute_url }}" class="editContent">
-                    {{ post.text|linebreaks|truncatechars:350 }}
+                    {{ post.text|safe|linebreaks|truncatechars:350 }}
                 </a>
             </div>
             <div class="post-owner-date">

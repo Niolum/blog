@@ -36,7 +36,9 @@
             <div class="post-wrapper text-wrapper">
                 <div class="post-body">
                     <p class="editContent">
+                        {% autoescape off %}
                         {{ post.text|linebreaks }}
+                        {% endautoescape %}
                     </p>
                 </div>
             </div>

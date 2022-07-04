@@ -14,7 +14,7 @@ class AddPostFormTest(TestCase):
                                     'text':'games games games games',
                                     'owner': 1,
                                     'categories': 'Gaming'})
-        self.assertRedirects(resp, '/post/8/')                            
+        self.assertRedirects(resp, '/post/13/')                            
         self.assertEqual(resp.status_code, 302)
         self.assertEqual(Post.objects.count(), post_count+1)
         self.assertTrue(Post.objects.filter(title='All Games'))
@@ -27,7 +27,7 @@ class AddCategoryFormTest(TestCase):
         category_count = Category.objects.count()
         self.client.login(username='niolum', password='170498sb')
         resp = self.client.post(reverse('add_category'), { 'name':'AllGames',})
-        self.assertRedirects(resp, '/category/7/')
+        self.assertRedirects(resp, '/category/10/')
         self.assertEqual(Category.objects.count(), category_count+1)
         self.assertTrue(Category.objects.filter(name='AllGames'))
 

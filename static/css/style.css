@@ -422,3 +422,28 @@ h2 {
     padding: 0 25px;
     font-size: 25px;
 }
+
+/* pagination */
+.pagination {
+    padding: 20px 0;
+    margin: auto;
+    justify-content: center;
+}
+
+.pagination .next {
+    display: block;
+    justify-content: center;
+    text-align:justify
+}
+
+.pagination .current {
+    display: block;
+    justify-content: center;
+    text-align:center;
+}
+
+.pagination .previous {
+    display: block;
+    justify-content: center;
+    text-align:justify
+}
