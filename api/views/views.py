@@ -14,6 +14,7 @@ from django.contrib.auth.models import User
 class PostListView(ListView):
     model = Post
     queryset = Post.objects.all()
+    paginate_by = 3
 
 
 class PostDetailView(DetailView):

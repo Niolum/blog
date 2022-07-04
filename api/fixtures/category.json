@@ -36,9 +36,23 @@
 },
 {
   "model": "api.category",
-  "pk": 6,
+  "pk": 7,
   "fields": {
-    "name": "news"
+    "name": "GameHistory"
+  }
+},
+{
+  "model": "api.category",
+  "pk": 8,
+  "fields": {
+    "name": "Retro"
+  }
+},
+{
+  "model": "api.category",
+  "pk": 9,
+  "fields": {
+    "name": "Review"
   }
 }
 ]

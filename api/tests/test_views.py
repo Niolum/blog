@@ -81,7 +81,7 @@ class AddCategoryViewTest(TestCase):
     def test_view_category(self):
         self.client.login(username='niolum', password='170498sb')
         resp = self.client.post(reverse('add_category'), { 'name':'AllGames',})
-        self.assertRedirects(resp, '/category/7/')
+        self.assertRedirects(resp, '/category/10/')
 
 
 class AddPostViewTest(TestCase):
@@ -94,7 +94,7 @@ class AddPostViewTest(TestCase):
                                     'text':'games games games games',
                                     'owner': 1,
                                     'categories': 'Gaming'})
-        self.assertRedirects(resp, '/post/8/')
+        self.assertRedirects(resp, '/post/13/')
 
 
 class SigninTest(TestCase):
