@@ -1,5 +1,83 @@
 [
 {
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$NOMQv8zbZRw1lACJSKT1Z0$odPh5vigiE5xhB8GcIzixYKW2iMs24MQTEZ+Xo5Nm7w=",
+    "last_login": "2022-07-07T04:46:24.937Z",
+    "is_superuser": true,
+    "username": "niolum",
+    "first_name": "Александр",
+    "last_name": "Белов",
+    "email": "anonim@mail.ru",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2021-12-07T06:29:57.016Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$IH83U31xv4TIjNgHdQ2CQl$0xM6XC+XrwqH77jLei9a1sdYL7uFCtLezbpt1UCnEtA=",
+    "last_login": "2022-07-04T04:49:55.664Z",
+    "is_superuser": false,
+    "username": "Alex98",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2021-12-11T06:33:53Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$GQ12crXJGbrgYZO4WEEKGl$2MJksusDIXCBn1cRDy73TabNf2Qv63Y7XQfP0eTEI5w=",
+    "last_login": "2022-07-04T04:40:46.564Z",
+    "is_superuser": false,
+    "username": "Nero",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-06-28T09:21:43.475Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "gkdcg8ltct5zvt77n5ozre12p1f464nn",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hBKoTAu3XsGMsyAVA0kpV0Z765NutDtf-_9lwi4rSVsPS1hZnEWgzj9bhHpkeoO-I711iS1ui5zlLsiD9rltXF6Xg7376BgL9-a0JLJij2Ohpx2biROyJqMA1ZRWUdA2VuFngEGb_LEE0W0gAk0W_H-AAFZOKI:1o9JPF:WFlX5Xl4j9B6K9jIztIQNEbQ3rakQfzIqEYLsL23acI",
+    "expire_date": "2022-07-21T04:46:25.169Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "pwwlvrzqn40pihldo94zjub8k51vq68i",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hBKoTAu3XsGMsyAVA0kpV0Z765NutDtf-_9lwi4rSVsPS1hZnEWgzj9bhHpkeoO-I711iS1ui5zlLsiD9rltXF6Xg7376BgL9-a0JLJij2Ohpx2biROyJqMA1ZRWUdA2VuFngEGb_LEE0W0gAk0W_H-AAFZOKI:1mvw1y:vFg_-ElNcbtPrX-9WTT3iRIJMFB5U4L_eTe3MXS3lJA",
+    "expire_date": "2021-12-25T06:38:50.334Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "xwgv5kz4vf7jjmhbg1gl0pnnq6qf7c2k",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hBKoTAu3XsGMsyAVA0kpV0Z765NutDtf-_9lwi4rSVsPS1hZnEWgzj9bhHpkeoO-I711iS1ui5zlLsiD9rltXF6Xg7376BgL9-a0JLJij2Ohpx2biROyJqMA1ZRWUdA2VuFngEGb_LEE0W0gAk0W_H-AAFZOKI:1o8EAb:LtKzr-nFIsGkoE7l5Xk6PZFR2n0a-Uts7tTEkeJ712M",
+    "expire_date": "2022-07-18T04:58:49.630Z"
+  }
+},
+{
   "model": "api.post",
   "pk": 1,
   "fields": {
@@ -124,6 +202,391 @@
       3,
       9
     ]
+  }
+},
+{
+  "model": "api.category",
+  "pk": 1,
+  "fields": {
+    "name": "VideoGame"
+  }
+},
+{
+  "model": "api.category",
+  "pk": 2,
+  "fields": {
+    "name": "Gaming"
+  }
+},
+{
+  "model": "api.category",
+  "pk": 3,
+  "fields": {
+    "name": "GameIndustry"
+  }
+},
+{
+  "model": "api.category",
+  "pk": 4,
+  "fields": {
+    "name": "Gamergate"
+  }
+},
+{
+  "model": "api.category",
+  "pk": 5,
+  "fields": {
+    "name": "GameNews"
+  }
+},
+{
+  "model": "api.category",
+  "pk": 7,
+  "fields": {
+    "name": "GameHistory"
+  }
+},
+{
+  "model": "api.category",
+  "pk": 8,
+  "fields": {
+    "name": "Retro"
+  }
+},
+{
+  "model": "api.category",
+  "pk": 9,
+  "fields": {
+    "name": "Review"
+  }
+},
+{
+  "model": "api.comment",
+  "pk": 1,
+  "fields": {
+    "text": "cool post",
+    "owner": 1,
+    "post": 1,
+    "created": "2021-12-09T10:56:07.676Z"
+  }
+},
+{
+  "model": "api.comment",
+  "pk": 2,
+  "fields": {
+    "text": "test comment",
+    "owner": 2,
+    "post": 2,
+    "created": "2021-12-11T06:38:28.162Z"
+  }
+},
+{
+  "model": "api.comment",
+  "pk": 3,
+  "fields": {
+    "text": "good",
+    "owner": 1,
+    "post": 1,
+    "created": "2022-06-25T06:10:10.038Z"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2021-12-07T10:20:56.046Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "1",
+    "object_repr": "Post object (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2021-12-11T06:33:53.801Z",
+    "user": 1,
+    "content_type": 4,
+    "object_id": "2",
+    "object_repr": "Alex98",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2021-12-11T06:35:54.895Z",
+    "user": 1,
+    "content_type": 4,
+    "object_id": "2",
+    "object_repr": "Alex98",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Staff status\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2022-06-25T12:40:38.698Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "4",
+    "object_repr": "4 | Геймергейт, увольнения, вранье | niolum",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2022-06-25T12:40:38.876Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "5",
+    "object_repr": "5 | Геймергейт, увольнения, вранье | niolum",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2022-06-25T13:59:21.740Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "1",
+    "object_repr": "1 | История серии Need For Speed. Часть 1 | niolum",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u043e\\u0441\\u0442\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2022-06-25T13:59:28.899Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "2",
+    "object_repr": "2 | «Ты помнишь, как всё начиналось?» — обзор Halo: Combat Evolved для XBOX Original | niolum",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u043e\\u0441\\u0442\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2022-06-25T13:59:39.243Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "3",
+    "object_repr": "3 | The slormancer. Абсурдная экшн-RPG, которая даст вдоволь посмеяться | niolum",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u043e\\u0441\\u0442\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2022-06-28T09:31:51.227Z",
+    "user": 1,
+    "content_type": 4,
+    "object_id": "4",
+    "object_repr": "Nero1",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2022-06-28T09:31:51.357Z",
+    "user": 1,
+    "content_type": 4,
+    "object_id": "5",
+    "object_repr": "Nero2",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2022-06-28T09:31:51.461Z",
+    "user": 1,
+    "content_type": 4,
+    "object_id": "6",
+    "object_repr": "Nero3",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2022-06-30T03:50:02.348Z",
+    "user": 1,
+    "content_type": 4,
+    "object_id": "7",
+    "object_repr": "Test1",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2022-07-03T05:06:39.438Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "8",
+    "object_repr": "8 | test | Alex98",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2022-07-04T04:10:51.244Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "6",
+    "object_repr": "news",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2022-07-04T04:35:43.713Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "10",
+    "object_repr": "10 | Из грязи в князи. Обзор Conker`s Bad Fur Day. | Nero",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0422\\u0435\\u043a\\u0441\\u0442\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 16,
+  "fields": {
+    "action_time": "2022-07-04T04:36:13.886Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "10",
+    "object_repr": "10 | Из грязи в князи. Обзор Conker`s Bad Fur Day. | Nero",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0422\\u0435\\u043a\\u0441\\u0442\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 17,
+  "fields": {
+    "action_time": "2022-07-04T04:36:48.117Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "10",
+    "object_repr": "10 | Из грязи в князи. Обзор Conker`s Bad Fur Day. | Nero",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0422\\u0435\\u043a\\u0441\\u0442\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 18,
+  "fields": {
+    "action_time": "2022-07-04T04:46:46.065Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "11",
+    "object_repr": "11 | [Обзор Nightmare Creatures] У нас есть Bloodborne дома. | Nero",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0422\\u0435\\u043a\\u0441\\u0442\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 19,
+  "fields": {
+    "action_time": "2022-07-04T04:47:14.348Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "11",
+    "object_repr": "11 | [Обзор Nightmare Creatures] У нас есть Bloodborne дома. | Nero",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0422\\u0435\\u043a\\u0441\\u0442\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 20,
+  "fields": {
+    "action_time": "2022-07-04T05:00:01.506Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "12",
+    "object_repr": "12 | The Elder Scrolls IV: Oblivion на максимальной сложности | Alex98",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0422\\u0435\\u043a\\u0441\\u0442\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 21,
+  "fields": {
+    "action_time": "2022-07-04T05:00:30.758Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "12",
+    "object_repr": "12 | The Elder Scrolls IV: Oblivion на максимальной сложности | Alex98",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0422\\u0435\\u043a\\u0441\\u0442\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 22,
+  "fields": {
+    "action_time": "2022-07-04T05:01:15.818Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "12",
+    "object_repr": "12 | The Elder Scrolls IV: Oblivion на максимальной сложности | Alex98",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0422\\u0435\\u043a\\u0441\\u0442\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 23,
+  "fields": {
+    "action_time": "2022-07-07T04:46:42.306Z",
+    "user": 1,
+    "content_type": 4,
+    "object_id": "8",
+    "object_repr": "test111",
+    "action_flag": 3,
+    "change_message": ""
   }
 }
 ]
