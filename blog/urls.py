@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
+from blog import settings
 
 urlpatterns = [
     path('', include('api.urls.urls')),
@@ -22,3 +24,14 @@ urlpatterns = [
     path('api/v1/', include('api.urls.urlsdrf')),
     path('api-auth/', include('rest_framework.urls')),
 ]
+
+if settings.DEBUG:
+    import debug_toolbar
+
+    import mimetypes
+    mimetypes.add_type("application/javascript", ".js", True)
+    
+    urlpatterns = [
+        path('__debug__/', include('debug_toolbar.urls')),
+    ] + urlpatterns
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -9,11 +9,12 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
+from django.contrib.auth import login
 
 
 class PostListView(ListView):
     model = Post
-    queryset = Post.objects.all()
+    queryset = Post.objects.all().select_related('owner')
     paginate_by = 3
 
 
@@ -22,6 +23,8 @@ class PostDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(PostDetailView, self).get_context_data(**kwargs)
+        post_id = context['post'].id
+        context['comments'] = Comment.objects.filter(post_id=post_id).select_related('post').select_related('owner')
         context["form"] = CommentForm()
         return context
 
@@ -46,6 +49,12 @@ class CategoryListView(ListView):
 
 class CategoryDetailView(DetailView):
     model = Category
+
+    def get_context_data(self, **kwargs):
+        context = super(CategoryDetailView, self).get_context_data(**kwargs)
+        category_id = context['category'].id
+        context['posts'] = Post.objects.filter(categories=category_id).prefetch_related('categories').select_related('owner')
+        return context
 
 
 class AddCategoryView(LoginRequiredMixin, CreateView):
@@ -74,6 +83,11 @@ class SignUp(CreateView):
     
     def get_success_url(self):
         return reverse('home')
+
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
+        return redirect('home')
 
 
 class EditProfileView(LoginRequiredMixin, UpdateView):

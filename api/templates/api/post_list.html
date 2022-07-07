@@ -49,32 +49,31 @@
         </div>
         {% endfor %}
         </div> 
-        <div class="pagination">
-            <span class="step-links">
-                
-                <div class="current">
-                    <span class="current">
-                        Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}.
-                    </span>
-                </div>
-
+        {% if page_obj.has_other_pages %}
+        <nav class="list-pages">
+            <ul>
                 {% if page_obj.has_previous %}
-                <div class="previous-page">
-                    <a href="?page=1">&laquo; Первая</a>
-                    /
-                    <a href="?page={{ page_obj.previous_page_number }}">Предыдущая</a>
-                </div>
+                <li class="page-num">
+                    <a href="?page={{ page_obj.previous_page_number }}">&lt;</a>
+                </li>
                 {% endif %}
-                
+                {% for p in paginator.page_range %}
+                {% if page_obj.number == p %}
+                <li class="page-num page-num-selected">{{ p }}</li>
+                {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
+                <li class="page-num">
+                    <a href="?page={{ p }}">{{ p }}</a>
+                </li>
+                {% endif %}
+                {% endfor %}
                 {% if page_obj.has_next %}
-                <div class="next-page">
-                    <a href="?page={{ page_obj.next_page_number }}">Следующая</a>
-                    /
-                    <a href="?page={{ page_obj.paginator.num_pages }}">Последняя &raquo;</a>
-                </div>
+                <li class="page-num">
+                    <a href="?page={{ page_obj.next_page_number }}">&gt;</a>
+                </li>
                 {% endif %}
-            </span>
-        </div>  
+            </ul>
+        </nav>
+        {% endif %}  
     </div>
 </div>
 {% endblock content %}

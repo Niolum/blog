@@ -13,7 +13,7 @@
             {{category.name}}
         </h1>
         <div class="row">
-        {% for post in category.posts.all %}
+        {% for post in posts %}
         <div class="post col-lg-12 col-md-8 col-xs-8">
             <div class="category-post">
                 <a href="{{ post.get_absolute_url }}" class="editContent">
