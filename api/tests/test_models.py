@@ -28,7 +28,7 @@ class CategoryModelTest(TestCase):
 
 class PostModelTest(TestCase):
 
-    fixtures = ['category.json', 'post.json', 'user.json']
+    fixtures = ['db.json']
 
     def test_title_label(self):
         post = Post.objects.get(id=1)
@@ -67,7 +67,7 @@ class PostModelTest(TestCase):
 
 class CommentModelTest(TestCase):
 
-    fixtures = ['category.json', 'post.json', 'user.json', 'comment.json']
+    fixtures = ['db.json']
 
     def test_text_label(self):
         comment = Comment.objects.get(id=1)

@@ -3,7 +3,7 @@ from django.urls import reverse
 
 
 class PostListViewTest(TestCase):
-    fixtures = ['post.json', 'category.json', 'user.json']
+    fixtures = ['db.json']
 
     def test_post_list_view_url_exists_at_desired_location(self):
         resp = self.client.get('')
@@ -19,7 +19,7 @@ class PostListViewTest(TestCase):
 
 
 class PostDetailViewTest(TestCase):
-    fixtures = ['post.json', 'category.json', 'comment.json', 'user.json']
+    fixtures = ['db.json']
 
     def test_post_deatil_view_url_exists_at_desired_location(self):
         resp = self.client.get('/post/1/')
@@ -35,7 +35,7 @@ class PostDetailViewTest(TestCase):
 
 
 class CategoryListViewTest(TestCase):
-    fixtures = ['post.json', 'category.json', 'user.json']
+    fixtures = ['db.json']
 
     def test_category_list_view_url_exists_at_desired_location(self):
         resp = self.client.get('/category/')
@@ -51,7 +51,7 @@ class CategoryListViewTest(TestCase):
 
 
 class CategoryDetailViewTest(TestCase):
-    fixtures = ['post.json', 'category.json', 'comment.json', 'user.json']
+    fixtures = ['db.json']
 
     def test_category_deatil_view_url_exists_at_desired_location(self):
         resp = self.client.get('/category/1/')
@@ -67,7 +67,7 @@ class CategoryDetailViewTest(TestCase):
 
 
 class AddCommentViewTest(TestCase):
-    fixtures = ['post.json', 'category.json', 'comment.json', 'user.json']
+    fixtures = ['db.json']
 
     def test_view_addreview(self):
         self.client.login(username='niolum', password='170498sb')
@@ -76,7 +76,7 @@ class AddCommentViewTest(TestCase):
 
 
 class AddCategoryViewTest(TestCase):
-    fixtures = ['post.json', 'user.json', 'category.json']
+    fixtures = ['db.json']
 
     def test_view_category(self):
         self.client.login(username='niolum', password='170498sb')
@@ -85,7 +85,7 @@ class AddCategoryViewTest(TestCase):
 
 
 class AddPostViewTest(TestCase):
-    fixtures = ['post.json', 'user.json', 'category.json']
+    fixtures = ['db.json']
 
     def test_view_post(self):
         self.client.login(username='niolum', password='170498sb')
@@ -98,7 +98,7 @@ class AddPostViewTest(TestCase):
 
 
 class SigninTest(TestCase):
-    fixtures = ['post.json', 'user.json', 'category.json', 'comment.json']
+    fixtures = ['db.json']
 
     def test_login_returns_200(self):
         resp = self.client.get('/accounts/login/')
@@ -115,7 +115,7 @@ class SigninTest(TestCase):
 
 
 class LogoutTest(TestCase):
-    fixtures = ['post.json', 'user.json', 'category.json', 'comment.json']
+    fixtures = ['db.json']
 
     def test_logout_view(self):
         self.client.login(username='niolum', password='170498sb')
@@ -129,7 +129,7 @@ class LogoutTest(TestCase):
 
 
 class EditProfileTest(TestCase):
-    fixtures = ['post.json', 'user.json', 'category.json', 'comment.json']
+    fixtures = ['db.json']
 
     def test_login_and_open_editprofile(self):
         self.client.login(username='niolum', password='170498sb')
@@ -148,7 +148,7 @@ class EditProfileTest(TestCase):
 
 
 class UserProfileTest(TestCase):
-    fixtures = ['post.json', 'user.json', 'category.json', 'comment.json']
+    fixtures = ['db.json']
 
     def test_view_userprofile(self):
         resp = self.client.get(reverse('user', args=[1]))

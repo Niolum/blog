@@ -4,7 +4,7 @@ from django.urls import reverse
 
 
 class AddPostFormTest(TestCase):
-    fixtures = ['post.json', 'user.json', 'category.json']
+    fixtures = ['db.json']
 
     def test_create_post(self):
         post_count = Post.objects.count()
@@ -21,7 +21,7 @@ class AddPostFormTest(TestCase):
 
 
 class AddCategoryFormTest(TestCase):
-    fixtures = ['post.json', 'user.json', 'category.json']
+    fixtures = ['db.json']
 
     def test_create_category(self):
         category_count = Category.objects.count()
@@ -33,7 +33,7 @@ class AddCategoryFormTest(TestCase):
 
 
 class CommentFormTest(TestCase):
-    fixtures = ['post.json', 'user.json', 'category.json']
+    fixtures = ['db.json']
 
     def test_create_review(self):
         comment_count = Comment.objects.count()
