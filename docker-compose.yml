@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  migrate:
+    build: .
+    container_name: 'migrate'
+    command: > 
+      /bin/sh -c "python3 manage.py migrate --force-color -v 3
+      && python3 manage.py loaddata api/fixtures/db.json"
+    volumes:
+      - .:/blog
+
+  web:
+    build: .
+    container_name: 'blog'
+    restart: always
+    command: python3 manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/blog
+    ports:
+      - "8000:8000"
+    environment:
+      - DJANGO_DEBUG=True
+      - DJANGO_SECRET_KEY='123'
+    depends_on:
+      - migrate
