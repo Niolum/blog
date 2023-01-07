@@ -19,6 +19,10 @@ jobs:
       - name: Install requirements
         run: pip install -r requirements.txt
       - name: Install staticfiles
+        env: 
+          SECRET_KEY: ${{secrets.SECRET_KEY}}
+          DEBUG: ${{secrets.DEBUG}}
+          ALLOWED_HOSTS: ${{secrets.ALLOWED_HOSTS}}
         run: python manage.py collectstatic
       - name: Run tests
         run: python manage.py test
