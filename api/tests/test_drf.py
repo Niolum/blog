@@ -39,12 +39,10 @@ class UserTests(APITestCase):
         else:
             print("[!] Login failed!")
         user = auth.get_user(self.client)
-        print("user: ", user)
-        print(User.objects.all())
 
         self.client.logout()
         user = auth.get_user(self.client)
-        print("user: ", user)
+
 
 
 class BlogTests(APITestCase):
@@ -81,15 +79,12 @@ class BlogTests(APITestCase):
         else:
             print("[!] Login failed!")
         user = auth.get_user(self.client)
-        print("user: ", user)
-        print(User.objects.all())
 
         url1 = reverse('category-list')
         data1 = {'name': 'Game'}
         response1 = self.client.post(url1, data1)
         self.assertEqual(response1.status_code, status.HTTP_201_CREATED)
         self.assertEqual(Category.objects.count(), 1)
-        print(response1.data)
 
         """
         тест на создание поста
@@ -103,7 +98,6 @@ class BlogTests(APITestCase):
         response2 = self.client.post(url2, data2)
         self.assertEqual(response2.status_code, status.HTTP_201_CREATED)
         self.assertEqual(Post.objects.count(), 1)
-        print(response2.data)
 
         """
         тест на создание комментария к посту
@@ -116,4 +110,3 @@ class BlogTests(APITestCase):
         response3 = self.client.post(url3, data3)
         self.assertEqual(response3.status_code, status.HTTP_201_CREATED)
         self.assertEqual(Comment.objects.count(), 1)
-        print(response3.data)
