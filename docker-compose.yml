@@ -1,25 +1,21 @@
 version: '3.8'
 services:
-  migrate:
+  web:
     build: .
+    container_name: 'blog'
+    volumes:
+      - .:/blog
+  web_migrate:
+    extends:
+      service: web
     container_name: 'migrate'
     command: > 
       /bin/sh -c "python3 manage.py migrate --force-color -v 3
       && python3 manage.py loaddata api/fixtures/db.json"
-    volumes:
-      - .:/blog
-
-  web:
-    build: .
-    container_name: 'blog'
-    restart: always
-    command: python3 manage.py runserver 0.0.0.0:8000
-    volumes:
-      - .:/blog
+  web_run:
+    extends:
+      service: web
+    container_name: 'blog_run'
+    command: gunicorn blog.wsgi:application --bind 0.0.0.0:8000
     ports:
-      - "8000:8000"
-    environment:
-      - DJANGO_DEBUG=True
-      - DJANGO_SECRET_KEY='123'
-    depends_on:
-      - migrate
+      - 8000:8000
