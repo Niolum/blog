@@ -32,4 +32,4 @@ jobs:
           docker-compose -f docker-compose.yml build
       - name: Push images
         run: |
-          docker push ${{ env.WEB_IMAGE }}:latest
+          docker push ${{ env.WEB_IMAGE }}
