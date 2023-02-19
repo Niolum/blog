@@ -15,9 +15,9 @@ jobs:
         uses: actions/checkout@v1
       - name: Add environment variables to .env
         run: |
-          echo "DEBUG=${{ secrets.DEBUG }}" >> .env
-          echo "SECET_KEY=${{ secrets.SECRET_KEY }}" >> .env
-          echo "ALLOWED_HOSTS=${{ secrets.ALLOWED_HOSTS}}"
+          SECRET_KEY: ${{secrets.SECRET_KEY}}
+          DEBUG: ${{secrets.DEBUG}}
+          ALLOWED_HOSTS: ${{secrets.ALLOWED_HOSTS}}
       - name: Set environment variables
         run: |
           echo"WEB_IMAGE=$(echo ${{ env.WEB_IMAGE }} )" >> $GITHUB_ENV
