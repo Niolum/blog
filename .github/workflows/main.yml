@@ -67,7 +67,7 @@ jobs:
           HOST: ${{ secrets.HOST }}
           USERNAME: ${{ secrets.USERNAME }}
           PORT: ${{ secrets.PORT }}
-          KEY: ${{ secrets.SSHKEY }}
+          KEY: ${{ secrets.SSH_KEY }}
           script: ls
       - name: Build and deploy images
         run: |
