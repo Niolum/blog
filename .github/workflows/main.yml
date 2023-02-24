@@ -71,6 +71,7 @@ jobs:
           script: ls
       - name: Build and deploy images
         run: |
+          ls
           cd /var/blog
           source .env
           docker login ghcr.io -u ${{ secrets.NAMESPACE }} -p ${{ secrets.REGISTRY_TOKEN}}
