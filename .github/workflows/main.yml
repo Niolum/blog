@@ -74,4 +74,4 @@ jobs:
           source .env
           docker login ghcr.io -u ${{ secrets.NAMESPACE }} -p ${{ secrets.REGISTRY_TOKEN}}
           docker pull $WEB_IMAGE
-          sudo docker-compose -f docker-compose.yml up -d
+          sudo docker compose -f docker-compose.yml up -d
