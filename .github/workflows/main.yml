@@ -75,9 +75,9 @@ jobs:
           KEY: ${{ secrets.SSH_KEY }}
           script: |
             cd /var/blog/blog
-            echo "$DEBUG" > .env
-            echo "$SECRET_KEY" >> .env
-            echo "$ALLOWED_HOSTS" >> .env
+            echo $DEBUG > .env
+            echo $SECRET_KEY >> .env
+            echo $ALLOWED_HOSTS >> .env
             cat .env
             cd ..
             source .env
