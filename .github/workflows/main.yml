@@ -76,11 +76,11 @@ jobs:
           script: |
             cd /var/blog/blog
             pwd
-            echo ${{ secrets.DEBUG }} > .env
+            echo "DEBUG=${{ secrets.DEBUG }}" > .env
             echo ${{ secrets.DEBUG }}
-            echo ${{ secrets.SECRET_KEY }} >> .env
+            echo "SECRET_KEY=${{ secrets.SECRET_KEY }}" >> .env
             echo ${{ secrets.SECRET_KEY }}
-            echo ${{ secrets.ALLOWED_HOSTS }} >> .env
+            echo "ALLOWED_HOSTS=${{ secrets.ALLOWED_HOSTS }}"" >> .env
             echo ${{ secrets.ALLOWED_HOSTS }}
             cat .env
             cd ..
