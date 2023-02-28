@@ -81,7 +81,7 @@ jobs:
             echo ${{ secrets.SECRET_KEY }}
             echo "SECRET_KEY=${{ secrets.SECRET_KEY }}" >> .env
             echo ${{ secrets.ALLOWED_HOSTS }}
-            echo "ALLOWED_HOSTS=${{ secrets.ALLOWED_HOSTS }}"" >> .env
+            echo "ALLOWED_HOSTS=${{ secrets.ALLOWED_HOSTS }}" >> .env
             cat .env
             cd ..
             source .env
