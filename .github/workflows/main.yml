@@ -69,7 +69,13 @@ jobs:
           PORT: ${{ secrets.PORT }}
           KEY: ${{ secrets.SSH_KEY }}
           script: |
-            cd /var/blog
+            cd /var/blog/blog
+            touch .env
+            echo ${{ secrets.DEBUG }} > .env
+            echo ${{ secrets.SECRET_KEY }} >> .env
+            echo ${{ secrets.ALLOWED_HOSTS }} >> .env
+            cat .env
+            cd ..
             source .env
             docker login ghcr.io -u ${{ secrets.NAMESPACE }} -p ${{ secrets.REGISTRY_TOKEN}}
             docker pull $WEB_IMAGE
