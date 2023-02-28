@@ -61,6 +61,9 @@ jobs:
         with:
           source: "."
           target: "/var/blog"
+        run: |
+          whoami
+          pwd
       - name: Executing remote command
         uses: appleboy/ssh-action@master
         with:
