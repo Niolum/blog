@@ -61,8 +61,13 @@ jobs:
         with:
           source: "."
           target: "/var/blog"
+
       - name: Executing remote command
         uses: appleboy/ssh-action@master
+        env:
+          DEBUG: ${{ secrets.DEBUG }}
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS }}
         with:
           HOST: ${{ secrets.HOST }}
           USERNAME: ${{ secrets.USERNAME }}
@@ -70,10 +75,9 @@ jobs:
           KEY: ${{ secrets.SSH_KEY }}
           script: |
             cd /var/blog/blog
-            touch .env
-            echo ${{ secrets.DEBUG }} > .env
-            echo ${{ secrets.SECRET_KEY }} >> .env
-            echo ${{ secrets.ALLOWED_HOSTS }} >> .env
+            echo "$DEBUG" > .env
+            echo "$SECRET_KEY" >> .env
+            echo "$ALLOWED_HOSTS" >> .env
             cat .env
             cd ..
             source .env
