@@ -61,9 +61,6 @@ jobs:
         with:
           source: "."
           target: "/var/blog"
-          script: |
-            whoami
-            pwd
       - name: Executing remote command
         uses: appleboy/ssh-action@master
         with:
@@ -72,13 +69,10 @@ jobs:
           PORT: ${{ secrets.PORT }}
           KEY: ${{ secrets.SSH_KEY }}
           script: |
+            cd /var/blog
+            source .env
+            docker login ghcr.io -u ${{ secrets.NAMESPACE }} -p ${{ secrets.REGISTRY_TOKEN}}
+            docker pull $WEB_IMAGE
+            sudo docker compose -f docker-compose.yml up -d
             whoami
             pwd
-      - name: Build and deploy images
-        run: |
-          source .env
-          docker login ghcr.io -u ${{ secrets.NAMESPACE }} -p ${{ secrets.REGISTRY_TOKEN}}
-          docker pull $WEB_IMAGE
-          sudo docker compose -f docker-compose.yml up -d
-          whoami
-          pwd
