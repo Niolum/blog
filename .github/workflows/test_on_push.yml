@@ -23,10 +23,12 @@ jobs:
           SECRET_KEY: ${{secrets.SECRET_KEY}}
           DEBUG: ${{secrets.DEBUG}}
           ALLOWED_HOSTS: ${{secrets.ALLOWED_HOSTS}}
+          CACHEOPS_REDIS: ${{secrets.CACHEOPS_REDIS}}
         run: python manage.py collectstatic
       - name: Run tests
         env: 
           SECRET_KEY: ${{secrets.SECRET_KEY}}
           DEBUG: ${{secrets.DEBUG}}
           ALLOWED_HOSTS: ${{secrets.ALLOWED_HOSTS}}
+          CACHEOPS_REDIS: ${{secrets.CACHEOPS_REDIS}}
         run: python manage.py test

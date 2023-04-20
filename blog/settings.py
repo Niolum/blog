@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'api.apps.ApiConfig',
     'django.contrib.admin',
+    'cacheops',
 ]
 
 MIDDLEWARE = [
@@ -154,3 +155,13 @@ db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+
+CACHEOPS_REDIS = os.getenv('CACHEOPS_REDIS')
+
+CACHEOPS = {
+    'auth.user': {'ops': 'get', 'timeout': 60*15},
+    'auth.*': {'ops': {'fetch', 'get'}, 'timeout': 60*60},
+    'auth.permission': {'ops': 'all', 'timeout': 60*60},
+    'api.apps.ApiConfig': {'ops': 'all', 'timeout': 60*15},
+    '*.*': {'timeout': 60*60},
+}
