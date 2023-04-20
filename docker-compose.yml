@@ -20,8 +20,9 @@ services:
     command: gunicorn blog.wsgi:application --bind 0.0.0.0:8000
     ports:
       - 8000:8000
-  redis:
+  cache:
     image: redis
     container_name: redis-django-blog
     ports:
-      - 6379:6379
+      - 6370:6370
+    command: redis-server --port 6370
