@@ -24,6 +24,14 @@ jobs:
           DEBUG: ${{secrets.DEBUG}}
           ALLOWED_HOSTS: ${{secrets.ALLOWED_HOSTS}}
           CACHEOPS_REDIS: ${{secrets.CACHEOPS_REDIS}}
+          DBUSER: ${{ secrets.DBUSER }}
+          DBPASS: ${{ secrets.DBPASS }}
+          DBNAME: ${{ secrets.DBNAME }}
+          DBHOST: ${{ secrets.DBHOST }}
+          DBPORT: ${{ secrets.DBPORT }}
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
         run: python manage.py collectstatic
       - name: Run tests
         env: 
@@ -31,4 +39,12 @@ jobs:
           DEBUG: ${{secrets.DEBUG}}
           ALLOWED_HOSTS: ${{secrets.ALLOWED_HOSTS}}
           CACHEOPS_REDIS: ${{secrets.CACHEOPS_REDIS}}
+          DBUSER: ${{ secrets.DBUSER }}
+          DBPASS: ${{ secrets.DBPASS }}
+          DBNAME: ${{ secrets.DBNAME }}
+          DBHOST: ${{ secrets.DBHOST }}
+          DBPORT: ${{ secrets.DBPORT }}
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
         run: python manage.py test

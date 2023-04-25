@@ -7,6 +7,7 @@ on:
 
 env:
   WEB_IMAGE: ghcr.io/$(echo $GITHUB_REPOSITORY | tr '[:upper:]' '[:lower:]')/web
+  NGINX_IMAGE: ghcr.io/$(echo $GITHUB_REPOSITORY | tr '[:upper:]' '[:lower:]')/nginx
 
 jobs:
 
@@ -22,8 +23,17 @@ jobs:
           DEBUG: ${{secrets.DEBUG}}
           ALLOWED_HOSTS: ${{secrets.ALLOWED_HOSTS}}
           CACHEOPS_REDIS: ${{secrets.CACHEOPS_REDIS}}
+          DBUSER: ${{ secrets.DBUSER }}
+          DBPASS: ${{ secrets.DBPASS }}
+          DBNAME: ${{ secrets.DBNAME }}
+          DBHOST: ${{ secrets.DBHOST }}
+          DBPORT: ${{ secrets.DBPORT }}
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
         run: |
           echo "WEB_IMAGE=$(echo ${{ env.WEB_IMAGE }} )" >> $GITHUB_ENV
+          echo "NGINX_IMAGE=$(echo ${{ env.NGINX_IMAGE }} )" >> $GITHUB_ENV
       - name: Log in to GitHub Pacheges
         run: echo ${REGISTRY_TOKEN} | docker login ghcr.io -u ${{ secrets.NAMESPACE }} --password-stdin
         env:
@@ -31,12 +41,14 @@ jobs:
       - name: Pull images
         run: |
           docker pull ${{ env.WEB_IMAGE }} || true
+          docker pull ${{ env.NGINX_IMAGE }} || true
       - name: Build images
         run: |
           docker-compose -f docker-compose.yml build
       - name: Push images
         run: |
           docker push ${{ env.WEB_IMAGE }}
+          docker push ${{ env.NGINX_IMAGE }}
 
   deploy:
     name: Deploy to VPS
@@ -48,11 +60,20 @@ jobs:
       - name: Add and set environment variables to .env
         run: |
           echo "WEB_IMAGE=${{ env.WEB_IMAGE }}" >> .env
+          echo "NGINX_IMAGE=${{ env.NGINX_IMAGE }}" >> .env
         env:
           SECRET_KEY: ${{secrets.SECRET_KEY}}
           DEBUG: ${{secrets.DEBUG}}
           ALLOWED_HOSTS: ${{secrets.ALLOWED_HOSTS}}
           CACHEOPS_REDIS: ${{secrets.CACHEOPS_REDIS}}
+          DBUSER: ${{ secrets.DBUSER }}
+          DBPASS: ${{ secrets.DBPASS }}
+          DBNAME: ${{ secrets.DBNAME }}
+          DBHOST: ${{ secrets.DBHOST }}
+          DBPORT: ${{ secrets.DBPORT }}
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
       - name: Copy repo
         uses: appleboy/scp-action@master
         with:
@@ -70,6 +91,14 @@ jobs:
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
           ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS }}
           CACHEOPS_REDIS: ${{secrets.CACHEOPS_REDIS}}
+          DBUSER: ${{ secrets.DBUSER }}
+          DBPASS: ${{ secrets.DBPASS }}
+          DBNAME: ${{ secrets.DBNAME }}
+          DBHOST: ${{ secrets.DBHOST }}
+          DBPORT: ${{ secrets.DBPORT }}
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
         with:
           HOST: ${{ secrets.HOST }}
           USERNAME: ${{ secrets.USERNAME }}
@@ -81,8 +110,17 @@ jobs:
             echo 'SECRET_KEY=${{ secrets.SECRET_KEY }}' >> .env
             echo 'ALLOWED_HOSTS=${{ secrets.ALLOWED_HOSTS }}' >> .env
             echo 'CACHEOPS_REDIS=${{secrets.CACHEOPS_REDIS}}' >> .env
+            echo 'DBUSER=${{ secrets.DBUSER }}' >> ,env
+            echo 'DBPASS=${{ secrets.DBPASS }}' >> .env
+            echo 'DBNAME=${{ secrets.DBNAME }}' >> .env
+            echo 'DBHOST=${{ secrets.DBHOST }}' >> .env
+            echo 'DBPORT=${{ secrets.DBPORT }}' >> .env
+            echo 'POSTGRES_USER=${{ secrets.POSTGRES_USER }}' >> .env
+            echo 'POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}' >> .env
+            echo 'POSTGRES_DB=${{ secrets.POSTGRES_DB }}' >> .env
             cd ..
             source .env
             docker login ghcr.io -u ${{ secrets.NAMESPACE }} -p ${{ secrets.REGISTRY_TOKEN}}
             docker pull $WEB_IMAGE
+            docker pull $NGINX_IMAGE
             sudo docker compose -f docker-compose.yml up -d
