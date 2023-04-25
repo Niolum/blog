@@ -44,7 +44,6 @@ jobs:
           docker pull ${{ env.NGINX_IMAGE }} || true
       - name: Build images
         run: |
-          cd /var/blog/blog
           echo 'DEBUG=${{ secrets.DEBUG }}' > .env
           echo 'SECRET_KEY=${{ secrets.SECRET_KEY }}' >> .env
           echo 'ALLOWED_HOSTS=${{ secrets.ALLOWED_HOSTS }}' >> .env
@@ -57,7 +56,6 @@ jobs:
           echo 'POSTGRES_USER=${{ secrets.POSTGRES_USER }}' >> .env
           echo 'POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}' >> .env
           echo 'POSTGRES_DB=${{ secrets.POSTGRES_DB }}' >> .env
-          cd ..
           docker-compose -f docker-compose.yml build
       - name: Push images
         run: |
@@ -119,7 +117,7 @@ jobs:
           PORT: ${{ secrets.PORT }}
           KEY: ${{ secrets.SSH_KEY }}
           script: |
-            cd /var/blog/blog
+            cd /var/blog
             echo 'DEBUG=${{ secrets.DEBUG }}' > .env
             echo 'SECRET_KEY=${{ secrets.SECRET_KEY }}' >> .env
             echo 'ALLOWED_HOSTS=${{ secrets.ALLOWED_HOSTS }}' >> .env
@@ -132,7 +130,6 @@ jobs:
             echo 'POSTGRES_USER=${{ secrets.POSTGRES_USER }}' >> .env
             echo 'POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}' >> .env
             echo 'POSTGRES_DB=${{ secrets.POSTGRES_DB }}' >> .env
-            cd ..
             source .env
             docker login ghcr.io -u ${{ secrets.NAMESPACE }} -p ${{ secrets.REGISTRY_TOKEN}}
             docker pull $WEB_IMAGE
