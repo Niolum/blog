@@ -44,6 +44,18 @@ jobs:
           docker pull ${{ env.NGINX_IMAGE }} || true
       - name: Build images
         run: |
+          echo 'DEBUG=${{ secrets.DEBUG }}' > .env
+          echo 'SECRET_KEY=${{ secrets.SECRET_KEY }}' >> .env
+          echo 'ALLOWED_HOSTS=${{ secrets.ALLOWED_HOSTS }}' >> .env
+          echo 'CACHEOPS_REDIS=${{secrets.CACHEOPS_REDIS}}' >> .env
+          echo 'DBUSER=${{ secrets.DBUSER }}' >> ,env
+          echo 'DBPASS=${{ secrets.DBPASS }}' >> .env
+          echo 'DBNAME=${{ secrets.DBNAME }}' >> .env
+          echo 'DBHOST=${{ secrets.DBHOST }}' >> .env
+          echo 'DBPORT=${{ secrets.DBPORT }}' >> .env
+          echo 'POSTGRES_USER=${{ secrets.POSTGRES_USER }}' >> .env
+          echo 'POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}' >> .env
+          echo 'POSTGRES_DB=${{ secrets.POSTGRES_DB }}' >> .env
           docker-compose -f docker-compose.yml build
       - name: Push images
         run: |
