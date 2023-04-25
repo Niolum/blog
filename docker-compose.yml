@@ -1,10 +1,22 @@
 version: '3.8'
 services:
+  postgresdb:
+    image: postgres:14
+    container_name: postgres-blog
+    env_file:
+      - ./blog/.env
+    command: -p 5430
+    volumes:
+      - django_blog_db:/var/lib/postgresql/data
+    ports:
+      - 5430:5430
+    expose:
+      - 5430
   web:
     build: .
     container_name: 'blog'
     volumes:
-      - .:/blog
+      - static_django_blog:/blog/staticfiles
   web_migrate:
     extends:
       service: web
@@ -18,11 +30,25 @@ services:
       service: web
     container_name: 'blog_run'
     command: gunicorn blog.wsgi:application --bind 0.0.0.0:8000
-    ports:
-      - 8000:8000
+    expose:
+      - 8000
   cache:
     image: redis
     container_name: redis-django-blog
     ports:
       - 6370:6370
     command: --port 6370
+  nginx:
+    build: ./nginx
+    container_name: nginx-django-blog
+    volumes:
+      - static_django_blog:/blog/staticfiles
+    ports:
+      - 1337:80
+    depends_on:
+      - web_run
+
+volumes:
+  static_django_blog:
+  django_blog_db:
+    external: True
