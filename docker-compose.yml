@@ -50,5 +50,6 @@ services:
 
 volumes:
   static_django_blog:
+    external: True
   django_blog_db:
     external: True
