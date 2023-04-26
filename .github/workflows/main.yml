@@ -122,7 +122,7 @@ jobs:
             echo 'SECRET_KEY=${{ secrets.SECRET_KEY }}' >> .env
             echo 'ALLOWED_HOSTS=${{ secrets.ALLOWED_HOSTS }}' >> .env
             echo 'CACHEOPS_REDIS=${{secrets.CACHEOPS_REDIS}}' >> .env
-            echo 'DBUSER=${{ secrets.DBUSER }}' >> ,env
+            echo 'DBUSER=${{ secrets.DBUSER }}' >> .env
             echo 'DBPASS=${{ secrets.DBPASS }}' >> .env
             echo 'DBNAME=${{ secrets.DBNAME }}' >> .env
             echo 'DBHOST=${{ secrets.DBHOST }}' >> .env
