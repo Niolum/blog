@@ -6,6 +6,9 @@ services:
     env_file:
       - ./.env
     command: -p 5430
+    networks:
+      testnet:
+        ipv4_address: 172.26.0.3
     volumes:
       - django_blog_db:/var/lib/postgresql/data
     ports:
@@ -46,6 +49,9 @@ services:
     container_name: nginx-django-blog
     volumes:
       - static_django_blog:/blog/staticfiles
+    networks:
+      testnet:
+        ipv4_address: 172.26.0.4
     ports:
       - 1337:80
     depends_on:
