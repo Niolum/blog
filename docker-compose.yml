@@ -44,6 +44,9 @@ services:
     ports:
       - 6370:6370
     command: --port 6370
+    networks:
+      testnet:
+        ipv4_address: 172.26.0.5
   nginx:
     build: ./nginx
     container_name: nginx-django-blog
